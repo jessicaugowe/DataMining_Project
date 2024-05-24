@@ -16,9 +16,9 @@ library(scales)
 
 # **INTRODUCTION**
 
- Air pollution is the contamination of the indoor or outdoor environment by any chemical, physical, or biological agent that modifies the natural characteristics of the atmosphere (WHO). According to WHO data, almost the entire global population (99%) breathes air that exceeds WHO guideline limits, containing high levels of pollutants. Low- and middle-income countries suffer the most from these high exposures. A report by The Guardian in November 2023 highlighted the impact of this issue, noting that pollution from fossil fuels contributes to approximately 5 million deaths annually, making this a critical public health concern.
+ Air pollution is the contamination of the indoor or outdoor environment by any chemical, physical, or biological agent that modifies the natural characteristics of the atmosphere (WHO). According to WHO data, almost the entire global population (99%) breathes air that exceeds WHO guideline limits, containing high levels of pollutants. Low- and middle-income countries suffer the most from these high exposures. A report by The Guardian in November 2023 highlighted the impact of this issue, noting that pollution from fossil fuels contributes to approximately 5 million deaths yearly, making this a critical public health concern.
 
- This project utilizes data from the WAQI API to generate real-time air quality data for Lahore, Pakistan. Notably, PM2.5 is the major air pollutant in Lahore, which has been listed by IQAir as the most polluted city in the world. This pollutant is the primary focus of this project. The goal of this project is to enhance public awareness of this severe issue among the inhabitants of Lahore and to provide timely health advice through SMS alerts when air quality is poor, with the aim of potentially improving health outcomes over the long term.
+ This project utilizes data from the WAQI API to generate real-time air quality data(PM2.5) for Lahore, Pakistan. Notably, PM2.5 is the major air pollutant in Lahore, which has been listed by IQAir as the most polluted city in the world. This pollutant is the primary focus of this project. The goal of this project is to enhance public awareness of this severe issue among the inhabitants of Lahore and to provide timely health advice through SMS alerts when air quality is poor, with the aim of potentially improving health outcomes over the long term.
 
 
 # **METHODOLOGY**
@@ -77,7 +77,7 @@ print(air_quality_data)
 
 # **RESULTS**
 
- The system effectively alerts Lahore's inhabitants of high PM2.5 levels, providing the with timely health advice. This rapid dissemination of information help individuals take necessary precautions to safeuard their health. In adition a line graph that visually represents the AQI forecasts for a ten-day period, enhancing the interpretabity of the data.
+ The system effectively alerts Lahore's inhabitants of high PM2.5 levels, providing them with timely health advice. This rapid dissemination of information help individuals take necessary precautions to safeguard their health. In addition, a line graph visually represents the AQI forecasts for a ten-day period, enhancing the interpretation of the data.
 
 
 
