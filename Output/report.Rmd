@@ -20,6 +20,23 @@ library(scales)
 
  This project utilizes data from the WAQI API to generate real-time air quality data for Lahore, Pakistan. Notably, PM2.5 is the major air pollutant in Lahore, which has been listed by IQAir as the most polluted city in the world. This pollutant is the primary focus of this project. The goal of this project is to enhance public awareness of this severe issue among the inhabitants of Lahore and to provide timely health advice through SMS alerts when air quality is poor, with the aim of potentially improving health outcomes over the long term.
 
+
+# **METHODOLOGY**
+
+ The data for this project was sourced using the WAQI API. The procedure involved various steps:
+
+- **API documentation review**: Understanding the capabilities and data access methods provided by the API.
+
+- **Account creation and API token acquisition**: Important steps that facilitated access to the needed data.
+
+- **AQI threshold identification**: Determining safe and dangerous AQI levels to tailor the alerts.
+
+- **Twilio API integration and API token acquisition**: Setting up a system to send SMS alerts when AQI levels are detrimental to health.
+
+- **Communication strategy**: Opting for text messaging as the primary communication channel due to its immediacy and wide reach.
+
+- **Data visualization**: Plotting a line graph to visually represent AQI forecasts for a ten-day period, enhancing the interpretation of the data.
+
 ```{r fetch_data, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, results = 'hide')
 # Function to fetch latest air quality data from AQICN API for a specified city
