@@ -41,7 +41,7 @@ BreatheSafe is a real-time air quality monitoring system designed to enhance pub
  
       TWILIO_PHONE_NUMBER = your_twilio_phone_number_here
  
-3. **Running the Scripts**
+4. **Running the Scripts**
 
  Run the scripts in the following order:
  
