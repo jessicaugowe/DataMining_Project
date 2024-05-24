@@ -48,7 +48,7 @@ perform_air_quality_check <- function() {
     
     # Send the SMS if the air quality is not "Good"--------------------------------
     if (quality_info$level != "Good") {
-      send_sms_alert("TWILIO_PHONE_NUMBER", message)  # Replace with your registered twilio phone number
+      send_sms_alert("123456789", message)  # Replace 123456789 with your registered twilio phone number typed
     }
   } else {
     print("Failed to fetch air quality data or PM2.5 data is missing.")
