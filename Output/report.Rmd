@@ -180,3 +180,11 @@ ggplot(air_quality_data, aes(x=Date, y=AQI)) +
 
 
  **Take action now! Stay informed and engage actively with Lahore’s air quality initiatives to help improve community health and environment.**
+
+
+# **REFERENCES**
+ World Health Organization. (2021). Air pollution. Retrieved from  https://www.who.int/health-topics/air-pollution
+
+ The Guardian. (2023, November). Pollution from fossil fuels contributes to approximately 5 million deaths annually. Retrieved from https://www.theguardian.com/environment/2023/nov/29/air-pollution-from-fossil-fuels-kills-5-million-people-a-year
+ 
+ IQAir. (2023). World’s most polluted cities. Retrieved from https://www.iqair.com/world-most-polluted-cities
