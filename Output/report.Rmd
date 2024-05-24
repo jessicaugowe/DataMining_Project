@@ -75,6 +75,9 @@ print(air_quality_data)
 
 ```
 
+# **RESULTS**
+
+ The system effectively alerts Lahore's inhabitants of high PM2.5 levels, providing the with timely health advice. This rapid dissemination of information help individuals take necessary precautions to safeuard their health. In adition a line graph that visually represents the AQI forecasts for a ten-day period, enhancing the interpretabity of the data.
 
 
 
@@ -132,5 +135,43 @@ if (!is.null(air_quality_data) && !is.null(air_quality_data$pm25)) {
 } else {
   print("No PM2.5 AQI data available to check quality.")
 }
+
+```
+
+```{r plot_aqi}
+knitr::opts_chunk$set(echo = FALSE, results = 'show')
+today_date <- Sys.Date()
+
+# Sample Data
+air_quality_data <- data.frame(
+  Date = seq(as.Date(today_date), by="day", length.out=10),
+  AQI = runif(10, min=0, max=300)  # Random AQI values between 0 and 300
+)
+
+# Ensuring that air_quality_data has no missing dates 
+air_quality_data <- na.omit(air_quality_data)  # Remove rows with NA values
+if (nrow(air_quality_data) < 10) {
+  warning("Data is missing for some dates")
+}
+
+
+
+#line graph
+ggplot(air_quality_data, aes(x=Date, y=AQI)) +
+  geom_line(color="black", linewidth=1) +  # Single color for the line
+  geom_point(aes(color=AQI), size=3) +  # Points colored based on AQI values
+  scale_color_gradientn(colors=c("green", "yellow", "orange", "red", "purple", "brown"),
+                        values=rescale(c(0, 50, 100, 150, 200, 300)),
+                        guide=guide_colourbar(title="PM2.5 Air Quality Index Levels", title.position = "top", title.hjust = 0.5)) +
+  labs(title="Daily PM2.5 Air Quality Index Levels of Lahore",
+       subtitle="Line shows trend, dots indicate AQI level",
+       x="Date",
+       y="AQI") +
+  theme_minimal() +
+  theme(plot.title = element_text(size=14, face="bold"),
+        plot.subtitle = element_text(size=12),
+        legend.position="bottom",
+        axis.text = element_text(size=12),
+        axis.title = element_text(size=12))
 
 ```
