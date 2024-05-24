@@ -4,9 +4,9 @@
 BreatheSafe is a real-time air quality monitoring system designed to enhance public health awareness in Lahore, Pakistan. The project leverages data from the WAQI API to provide timely health advice via SMS alerts when air quality is poor, focusing primarily on PM2.5 levels. The goal is to improve public health outcomes by enabling inhabitants to take necessary precautions.
 
 ## Features
-- **Real-Time Data Retrieval**: Fetches air quality data from the WAQI API.
+- **Real-Time Data Retrieval**: Fetches air quality data from the WAQI API http://aqicn.org/api/
 
-- **Health Alerts**: Sends SMS alerts to users when air quality reaches unsafe levels using the Twilio API.
+- **Health Alerts**: Sends SMS alerts to users when air quality reaches unsafe levels using the Twilio API  https://www.twilio.com/docs/usage/api
 
 - **Health Advice**: Provides tailored health advice based on PM2.5 AQI levels.
 
@@ -49,4 +49,4 @@ BreatheSafe is a real-time air quality monitoring system designed to enhance pub
     
  **Contributing**
  
-We welcome contributions! Feel free to submit pull requests or open issues. Additionally, please review the limitations and considerations highlighted in the report.
+We(Me, Myself and I) welcome contributions! Feel free to submit pull requests or open issues. Additionally, please review the limitations and considerations stated in the report. **Ciao!**
