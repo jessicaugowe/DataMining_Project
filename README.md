@@ -49,5 +49,4 @@ BreatheSafe is a real-time air quality monitoring system designed to enhance pub
     
  **Contributing**
  
-Feel free to contribute by submitting pull requests or opening issues.
-
+We welcome contributions! Feel free to submit pull requests or open issues. Additionally, please review the limitations and considerations highlighted in the report.
