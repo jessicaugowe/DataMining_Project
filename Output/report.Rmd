@@ -175,3 +175,53 @@ ggplot(air_quality_data, aes(x=Date, y=AQI)) +
         axis.title = element_text(size=12))
 
 ```
+
+# **CHALLENGES**
+ The activities unfolded as planned, with some challenges encountered along the way. The main difficulties were: 
+ 
+- **Finding an appropriate API**: The initial challenge was to find an API that provided air quality data for the specific location of interest. Due to limitations, I had to choose a different location based on where the satellite data was available.
+
+- **Ensuring accurate and timely data retrieval**: It was essential to ensure that the data fetched was both accurate and updated in real-time to provide reliable alerts.
+
+- **Managing environment variables securely**: Storing and managing API keys and tokens securely was crucial to maintain the integrity and security of the system.
+
+- **Ensuring reliable SMS delivery through Twilio**: Integrating and ensuring the reliability of SMS delivery through Twilio required careful configuration and testing.
+
+- **Dealing with missing or incomplete data**: Handling scenarios where the API response was incomplete or missing data required robust error handling and fallback mechanisms.
+
+# **CURRENT CONSTRAINTS AND CONSIDERATIONS** 
+- **Multi-language support**
+
+ Constraint: The project currently provides health advice only in English. Finding a free API supporting multiple languages like Punjabi and Urdu was not possible.
+ 
+ Consideration: Consider integrating paid APIs for language support or explore collaborations for funding.
+
+- **Advanced notification system**
+
+ Constraint: The notification system is basic and not customizable based on user health conditions or preferences.
+ 
+ Consideration: Develop a system allowing users to customize alerts.
+
+- **User feedback loop**
+
+ Constraint: There is no mechanism for collecting user feedback on alert effectiveness.
+ 
+ Consideration: Implement channels for user feedback to enhance the system.
+
+- **Scalability**
+
+ Constraint: The project is focused on Lahore but could be expanded to other regions.
+ 
+ Consideration: Scale the project to cover more cities, adapting to local air quality standards.
+
+- **Data privacy**
+
+ Constraint: Ensuring data privacy is crucial, especially with future expansions.
+ 
+ Consideration: Develop a data privacy framework for handling user data.
+
+# **CONCLUSION**
+ Despite current constraints, this project demonstrates significant potential for improving public health awareness through real-time data. Implementing this alert system could enhance public health and potentially improve health outcomes in Lahore. While further study is needed, the system's timely alerts and health advice show the power of technology in combating air pollution. With more resources and time, it can offer health advice in multiple languages, enhancing accessibility and effectiveness. By addressing constraints and incorporating improvements, the project can become a powerful tool for protecting public health across regions. Continued use and expansion can play a critical role in public health initiatives. 
+
+
+ **Take action now! Stay informed and engage actively with Lahore’s air quality initiatives to help improve community health and environment.**
