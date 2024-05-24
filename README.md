@@ -31,7 +31,7 @@ BreatheSafe is a real-time air quality monitoring system designed to enhance pub
  
 3. **Set up environment variables**
 
- Create a .Renviron' file in your project directory with the following content:
+ Create a '.Renviron' file in your project directory with the following content:
  
       AQI_API_KEY = your_aqi_api_key_here
  
