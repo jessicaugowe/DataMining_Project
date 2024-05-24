@@ -15,7 +15,7 @@ BreatheSafe is a real-time air quality monitoring system designed to enhance pub
 ## Folder Structure
 - **Data**: contains fetch_data.R script used to fetch air quality data from WAQI API.
 
-- **Script**: contains process_data.R and send_alert.R scripts used to process data and send SMS alerts when the air quality is bad using Twilio API.
+- **Script**: contains process_data.R and alert_message.R scripts used to process data and send SMS alerts when the air quality is bad using Twilio API.
 
 - **Figure**: contains plot_data.R script used to visualize air quality data.
 
