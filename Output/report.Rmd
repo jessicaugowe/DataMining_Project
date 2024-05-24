@@ -134,7 +134,7 @@ ggplot(air_quality_data, aes(x=Date, y=AQI)) +
 # **CHALLENGES**
  The activities unfolded as planned, with some challenges encountered along the way. The main difficulties were: 
  
-- **Finding an appropriate API**: The initial challenge was to find an API that provided air quality data for the specific location of interest. Due to limitations, I had to choose a different location based on where the satellite data was available.
+- **Finding an appropriate API**: The initial challenge was to find an API that provided air quality data for the specific location of interest. Due to limitations, I had to choose a different location based on where data was available.
 
 - **Ensuring accurate and timely data retrieval**: It was essential to ensure that the data fetched was both accurate and updated in real-time to provide reliable alerts.
 
