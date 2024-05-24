@@ -80,63 +80,18 @@ print(air_quality_data)
  The system effectively alerts Lahore's inhabitants of high PM2.5 levels, providing them with timely health advice. This rapid dissemination of information help individuals take necessary precautions to safeguard their health. In addition, a line graph visually represents the AQI forecasts for a ten-day period, enhancing the interpretation of the data.
 
 
+#### Sample Text Message
 
-```{r alert_message, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, results = 'hide')
+```{r sample_text, echo=FALSE, results='asis'}
+# Sample text message
+sample_message <- "Alert: The current PM2.5 AQI is 150 which is considered 'Unhealthy for Sensitive Groups'. Members of sensitive groups may experience health effects. The general public is not likely to be affected. Children, active adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion."
 
-# Function to assess air quality based on PM2.5 AQI and provide relevant health advice
-check_quality <- function(pm25_aqi) {
-  if (pm25_aqi <= 50) {
-    return(list(
-      level = "Good",
-      health_implications = "Air quality is considered satisfactory, and air pollution poses little or no risk.",
-      cautionary_statement = "None"
-    ))
-  } else if (pm25_aqi <= 100) {
-    return(list(
-      level = "Moderate",
-      health_implications = "Air quality is acceptable; however, there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.",
-      cautionary_statement = "Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion."
-    ))
-  } else if (pm25_aqi <= 150) {
-    return(list(
-      level = "Unhealthy for Sensitive Groups",
-      health_implications = "Members of sensitive groups may experience health effects. The general public is not likely to be affected.",
-      cautionary_statement = "Children, active adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion."
-    ))
-  } else if (pm25_aqi <= 200) {
-    return(list(
-      level = "Unhealthy",
-      health_implications = "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.",
-      cautionary_statement = "Children, active adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion."
-    ))
-  } else if (pm25_aqi <= 300) {
-    return(list(
-      level = "Very Unhealthy",
-      health_implications = "Health alert: everyone may experience more serious health effects.",
-      cautionary_statement = "Everyone should avoid all outdoor exertion."
-    ))
-  } else {
-    return(list(
-      level = "Hazardous",
-      health_implications = "Health warnings of emergency conditions. The entire population is more likely to be affected.",
-      cautionary_statement = "Everyone should avoid all outdoor exertion."
-    ))
-  }
-}
-
-
-#  usage with fetched PM2.5 AQI data
-if (!is.null(air_quality_data) && !is.null(air_quality_data$pm25)) {
-  quality_result <- check_quality(air_quality_data$pm25)
-  print(paste("Air quality level:", quality_result$level))
-  print(paste("Health implications:", quality_result$health_implications))
-  print(paste("Cautionary statement:", quality_result$cautionary_statement))
-} else {
-  print("No PM2.5 AQI data available to check quality.")
-}
+cat(sample_message)
 
 ```
+
+
+
 
 ```{r plot_aqi}
 knitr::opts_chunk$set(echo = FALSE, results = 'show')
@@ -189,7 +144,7 @@ ggplot(air_quality_data, aes(x=Date, y=AQI)) +
 
 - **Dealing with missing or incomplete data**: Handling scenarios where the API response was incomplete or missing data required robust error handling and fallback mechanisms.
 
-# **CURRENT CONSTRAINTS AND CONSIDERATIONS** 
+# **LIMITATIONS AND CONSIDERATIONS** 
 - **Multi-language support**
 
  Constraint: The project currently provides health advice only in English. Finding a free API supporting multiple languages like Punjabi and Urdu was not possible.
