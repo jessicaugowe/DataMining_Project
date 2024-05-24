@@ -1,0 +1,119 @@
+---
+title: "BreatheSafe: Dynamic Air Quality Surveillance with Automated Alerts"
+author: "Jessica Japheth Ugowe"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(httr)
+library(jsonlite)
+library(ggplot2)
+library(scales)
+```
+
+# **INTRODUCTION**
+
+ Air pollution is the contamination of the indoor or outdoor environment by any chemical, physical, or biological agent that modifies the natural characteristics of the atmosphere (WHO). According to WHO data, almost the entire global population (99%) breathes air that exceeds WHO guideline limits, containing high levels of pollutants. Low- and middle-income countries suffer the most from these high exposures. A report by The Guardian in November 2023 highlighted the impact of this issue, noting that pollution from fossil fuels contributes to approximately 5 million deaths annually, making this a critical public health concern.
+
+ This project utilizes data from the WAQI API to generate real-time air quality data for Lahore, Pakistan. Notably, PM2.5 is the major air pollutant in Lahore, which has been listed by IQAir as the most polluted city in the world. This pollutant is the primary focus of this project. The goal of this project is to enhance public awareness of this severe issue among the inhabitants of Lahore and to provide timely health advice through SMS alerts when air quality is poor, with the aim of potentially improving health outcomes over the long term.
+
+```{r fetch_data, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = 'hide')
+# Function to fetch latest air quality data from AQICN API for a specified city
+fetch_air_quality_data <- function(city = "Lahore") {
+  base_url <- "http://api.waqi.info/feed/"
+  params <- list(
+    token = Sys.getenv("AQI_API_KEY"),  # API key stored as an environment variable
+    city = city
+  )
+  
+  response <- GET(url = paste0(base_url, city), query = params)
+  response_content <- content(response, "text")
+  print(paste("HTTP Status Code:", status_code(response)))  # Print status code for debugging
+  print(response_content)  # Print the raw response content for debugging
+  
+  # Parse JSON response only if the HTTP status is OK
+  if (status_code(response) == 200) {
+    data <- fromJSON(response_content)
+    iaqi <- data$data$iaqi  # Simplified path to the air quality index data
+    
+    # Prepare a simple list to store the results with NA as default for missing data
+    results <- list(
+      pm25 = if(!is.null(iaqi$pm25)) iaqi$pm25$v else NA
+    )
+    
+    return(results)
+  } else {
+    warning("Failed to fetch data: HTTP Status Code - ", status_code(response))
+    return(NULL)
+  }
+}
+
+# Fetch air quality data for Lahore and print results
+air_quality_data <- fetch_air_quality_data()
+print(air_quality_data)
+
+```
+
+
+
+
+```{r alert_message, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = 'hide')
+
+# Function to assess air quality based on PM2.5 AQI and provide relevant health advice
+check_quality <- function(pm25_aqi) {
+  if (pm25_aqi <= 50) {
+    return(list(
+      level = "Good",
+      health_implications = "Air quality is considered satisfactory, and air pollution poses little or no risk.",
+      cautionary_statement = "None"
+    ))
+  } else if (pm25_aqi <= 100) {
+    return(list(
+      level = "Moderate",
+      health_implications = "Air quality is acceptable; however, there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.",
+      cautionary_statement = "Active children and adults, and people with respiratory disease, such as asthma, should limit prolonged outdoor exertion."
+    ))
+  } else if (pm25_aqi <= 150) {
+    return(list(
+      level = "Unhealthy for Sensitive Groups",
+      health_implications = "Members of sensitive groups may experience health effects. The general public is not likely to be affected.",
+      cautionary_statement = "Children, active adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion."
+    ))
+  } else if (pm25_aqi <= 200) {
+    return(list(
+      level = "Unhealthy",
+      health_implications = "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.",
+      cautionary_statement = "Children, active adults, and people with respiratory disease, such as asthma, should avoid prolonged outdoor exertion; everyone else, especially children, should limit prolonged outdoor exertion."
+    ))
+  } else if (pm25_aqi <= 300) {
+    return(list(
+      level = "Very Unhealthy",
+      health_implications = "Health alert: everyone may experience more serious health effects.",
+      cautionary_statement = "Everyone should avoid all outdoor exertion."
+    ))
+  } else {
+    return(list(
+      level = "Hazardous",
+      health_implications = "Health warnings of emergency conditions. The entire population is more likely to be affected.",
+      cautionary_statement = "Everyone should avoid all outdoor exertion."
+    ))
+  }
+}
+
+
+#  usage with fetched PM2.5 AQI data
+if (!is.null(air_quality_data) && !is.null(air_quality_data$pm25)) {
+  quality_result <- check_quality(air_quality_data$pm25)
+  print(paste("Air quality level:", quality_result$level))
+  print(paste("Health implications:", quality_result$health_implications))
+  print(paste("Cautionary statement:", quality_result$cautionary_statement))
+} else {
+  print("No PM2.5 AQI data available to check quality.")
+}
+
+```
